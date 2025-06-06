@@ -22,19 +22,19 @@ const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
             Evaluate your business's readiness to adopt AI—across systems, culture, budget, tooling, and execution. This diagnostic contains 5 onboarding questions and 20 scored questions.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 mb-16">
+          <div className="grid grid-cols-3 gap-8 sm:gap-12 max-w-lg mx-auto mb-16">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-gray-100 flex items-center justify-center text-black mb-4 transition-colors hover:bg-gray-200">
                 <span className="text-xl font-light">5</span>
               </div>
-              <span className="text-sm text-black font-medium">Onboarding Questions</span>
+              <span className="text-sm text-black font-medium">Onboarding</span>
             </div>
             
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-gray-100 flex items-center justify-center text-black mb-4 transition-colors hover:bg-gray-200">
                 <span className="text-xl font-light">20</span>
               </div>
-              <span className="text-sm text-black font-medium">Scored Questions</span>
+              <span className="text-sm text-black font-medium">Questions</span>
             </div>
             
             <div className="flex flex-col items-center">
