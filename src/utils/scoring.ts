@@ -31,13 +31,15 @@ export const calculateSurveyScore = (responses: SurveyResponse): ScoredResponse 
       sectionScore += calculateQuestionScore(question, response);
     });
 
-    sectionScores[section.id] = sectionScore;
+    // Round section score to nearest integer
+    sectionScores[section.id] = Math.round(sectionScore);
     totalScore += sectionScore;
   });
 
   return {
     ...responses,
-    totalScore,
+    // Round total score to nearest integer
+    totalScore: Math.round(totalScore),
     sectionScores
   };
 };
