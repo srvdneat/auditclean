@@ -7,7 +7,7 @@ interface SurveyIntroProps {
 
 const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white\" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
       <div className="max-w-4xl w-full text-center animate-fade-in py-8">
         <div className="mb-16">
           <img 
