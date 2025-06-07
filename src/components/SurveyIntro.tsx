@@ -7,49 +7,41 @@ interface SurveyIntroProps {
 
 const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white\" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
       <div className="max-w-4xl w-full text-center animate-fade-in py-8">
-        <div className="mb-16">
+        <div className="mb-20">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-16 mx-auto mb-12"
+            className="h-16 mx-auto mb-20"
           />
         </div>
         
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl text-black mb-8 leading-tight">
-          AI Readiness Diagnostic for Australian SMEs
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+          NeatAudit
         </h1>
         
-        <p className="text-lg sm:text-xl text-black mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+        <h2 className="text-lg sm:text-xl text-black mb-20 max-w-3xl mx-auto font-normal leading-relaxed">
+          Assess your organization's AI readiness with our comprehensive audit framework
+        </h2>
+        
+        <div className="w-full h-px bg-gray-200 mb-20"></div>
+        
+        <p className="text-sm sm:text-base text-gray-600 mb-20 max-w-2xl mx-auto font-light leading-relaxed">
           Evaluate your business's readiness to adopt AI—across systems, culture, budget, tooling, and execution. This diagnostic contains 5 onboarding questions and 20 scored questions.
         </p>
         
-        <div className="grid grid-cols-2 gap-8 sm:gap-12 max-w-md mx-auto mb-16">
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-gray-100 flex items-center justify-center text-black mb-4 transition-colors hover:bg-gray-200">
-              <span className="text-xl font-light">25</span>
-            </div>
-            <span className="text-sm text-black font-medium">Questions</span>
-          </div>
-          
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-gray-100 flex items-center justify-center text-black mb-4 transition-colors hover:bg-gray-200">
-              <span className="text-xl font-light">10</span>
-            </div>
-            <span className="text-sm text-black font-medium">Minutes</span>
-          </div>
-        </div>
-        
         <button
           onClick={onStart}
-          className="inline-flex items-center px-8 py-4 bg-black hover:bg-gray-800 text-white font-light transition-colors text-lg"
+          className="inline-flex items-center px-6 py-3 bg-black hover:bg-gray-800 text-white text-sm font-medium transition-all duration-200 ease-out hover:shadow-lg transform hover:-translate-y-0.5 my-4"
         >
-          <span>Start the diagnostic</span>
-          <ArrowRight className="ml-3" size={20} />
+          <span>Start Your Assessment</span>
+          <ArrowRight className="ml-2" size={16} />
         </button>
         
-        <div className="border-t border-gray-200 pt-8 mt-12 text-center">
+        <div className="w-full h-px bg-gray-200 mt-20 mb-8"></div>
+        
+        <div className="text-center">
           <a 
             href="https://www.srvdneat.com" 
             target="_blank" 
