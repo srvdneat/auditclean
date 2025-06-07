@@ -63,7 +63,6 @@ const SurveyForm: React.FC = () => {
     return true;
   };
 
-  // Validate all required questions before submission
   const validateAllRequiredQuestions = () => {
     const missing: string[] = [];
     sections.forEach(section => {
@@ -92,7 +91,6 @@ const SurveyForm: React.FC = () => {
       setSubmitting(true);
       setSubmitError(null);
 
-      // Validate all required questions before submission
       const missing = validateAllRequiredQuestions();
       if (missing.length > 0) {
         setSubmitError(
@@ -133,7 +131,7 @@ const SurveyForm: React.FC = () => {
     setTimeout(() => {
       goToNextQuestion();
       setTransition(false);
-    }, 300);
+    }, 200);
   };
 
   const handlePrevious = () => {
@@ -143,7 +141,7 @@ const SurveyForm: React.FC = () => {
     setTimeout(() => {
       goToPreviousQuestion();
       setTransition(false);
-    }, 300);
+    }, 200);
   };
 
   const startSurvey = () => {
@@ -175,80 +173,109 @@ const SurveyForm: React.FC = () => {
   const progressPercentage = (answeredQuestions / totalQuestions) * 100;
 
   return (
-    <div className="min-h-screen flex flex-col px-4 sm:px-6 lg:px-8 py-10 max-w-5xl mx-auto">
-      <div className="mb-8">
-        <img 
-          src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
-          alt="NeatAudit Logo" 
-          className="h-12 mb-8"
-        />
-        <ProgressBar percentage={progressPercentage} />
-        <SectionIndicator 
-          sections={sections} 
-          currentSectionIndex={currentSectionIndex} 
-        />
-      </div>
-      
-      <div className={`flex-grow flex flex-col ${transition ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}>
-        <div className="mb-4">
-          <h2 className="text-xl font-light text-black">{currentSection.title}</h2>
-          {currentSection.description && (
-            <p className="text-gray-500 font-light mt-1">{currentSection.description}</p>
-          )}
-        </div>
-        
-        <div
-          className={`flex-grow flex flex-col items-stretch justify-start transition-all duration-500 ${transition ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
-          style={{ minHeight: '340px' }}
-        >
-          <div className="flex-grow flex flex-col justify-center">
-            <QuestionDisplay 
-              question={currentQuestion}
-              response={response}
-              sectionIndex={currentSectionIndex}
-              questionIndex={currentQuestionIndex}
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Header Section */}
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+        <div className="max-w-5xl mx-auto">
+          <img 
+            src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
+            alt="NeatAudit Logo" 
+            className="h-16 sm:h-20 mb-6 sm:mb-8"
+          />
+          <ProgressBar percentage={progressPercentage} />
+          <div className="mt-4">
+            <SectionIndicator 
+              sections={sections} 
+              currentSectionIndex={currentSectionIndex} 
             />
-            {validationError && (
-              <p className="mt-2 text-sm text-red-500">{validationError}</p>
-            )}
-            {submitError && (
-              <p className="mt-2 text-sm text-red-500 whitespace-pre-line">{submitError}</p>
-            )}
           </div>
         </div>
-      </div>
+      </header>
       
-      <div className="mt-8 flex justify-between items-center">
-        <button
-          onClick={handlePrevious}
-          disabled={isFirstQuestion()}
-          className={`flex items-center space-x-2 px-4 py-2 transition-colors ${
-            isFirstQuestion() 
-              ? 'text-gray-300 cursor-not-allowed' 
-              : 'text-black hover:text-accent'
-          }`}
-        >
-          <ArrowLeft size={16} />
-          <span>Previous</span>
-        </button>
-        
-        <button
-          onClick={handleNext}
-          disabled={!canContinue || submitting}
-          className={`flex items-center space-x-2 px-6 py-3 font-light transition-all ${
-            canContinue && !submitting
-              ? 'bg-black text-white hover:bg-accent'
-              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-          }`}
-        >
-          <span>{isLastQuestion() ? (submitting ? 'Submitting...' : 'Complete') : 'Continue'}</span>
-          <ArrowRight size={16} />
-        </button>
-      </div>
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8 pb-6">
+        <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
+          {/* Section Header */}
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">
+              {currentSection.title}
+            </h2>
+            {currentSection.description && (
+              <p className="text-gray-600 font-light text-sm sm:text-base">
+                {currentSection.description}
+              </p>
+            )}
+          </div>
+          
+          {/* Question Content */}
+          <div className={`flex-1 flex flex-col transition-all duration-200 ease-out ${
+            transition ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+          }`}>
+            <div className="flex-1 flex flex-col justify-center min-h-[400px] sm:min-h-[500px]">
+              <QuestionDisplay 
+                question={currentQuestion}
+                response={response}
+                sectionIndex={currentSectionIndex}
+                questionIndex={currentQuestionIndex}
+              />
+              
+              {/* Error Messages */}
+              {validationError && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
+                  <p className="text-sm text-red-700 font-medium">{validationError}</p>
+                </div>
+              )}
+              {submitError && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
+                  <p className="text-sm text-red-700 font-medium whitespace-pre-line">{submitError}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
       
-      <div className="mt-4 text-center text-sm text-gray-500">
-        <p>Question {answeredQuestions} of {totalQuestions}</p>
-      </div>
+      {/* Footer Navigation */}
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 bg-white border-t border-gray-200">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex justify-between items-center mb-4">
+            <button
+              onClick={handlePrevious}
+              disabled={isFirstQuestion()}
+              className={`flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 ${
+                isFirstQuestion() 
+                  ? 'text-gray-400 cursor-not-allowed' 
+                  : 'text-gray-700 hover:text-black hover:bg-gray-50 active:scale-95'
+              }`}
+              aria-label="Go to previous question"
+            >
+              <ArrowLeft size={18} />
+              <span className="font-medium">Previous</span>
+            </button>
+            
+            <button
+              onClick={handleNext}
+              disabled={!canContinue || submitting}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                canContinue && !submitting
+                  ? 'bg-black text-white hover:bg-gray-800 active:scale-95 shadow-lg'
+                  : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+              }`}
+              aria-label={isLastQuestion() ? 'Submit survey' : 'Go to next question'}
+            >
+              <span>{isLastQuestion() ? (submitting ? 'Submitting...' : 'Complete Survey') : 'Continue'}</span>
+              <ArrowRight size={18} />
+            </button>
+          </div>
+          
+          {/* Progress Indicator */}
+          <div className="text-center">
+            <p className="text-sm text-gray-500 font-medium">
+              Question {answeredQuestions} of {totalQuestions}
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const SectionIndicator: React.FC<SectionIndicatorProps> = ({
   currentSectionIndex,
 }) => {
   return (
-    <div className="flex justify-between mt-4">
+    <div className="flex items-center justify-between w-full">
       {sections.map((section, index) => (
         <div
           key={section.id}
@@ -19,25 +19,36 @@ const SectionIndicator: React.FC<SectionIndicatorProps> = ({
             index < sections.length - 1 ? 'flex-1' : ''
           }`}
         >
+          {/* Section Number */}
           <div
-            className={`w-6 h-6 flex items-center justify-center text-xs ${
-              index === currentSectionIndex
-                ? 'bg-black text-white'
-                : index < currentSectionIndex
-                ? 'bg-gray-200 text-black'
-                : 'bg-gray-100 text-gray-500'
-            }`}
+            className={`
+              w-8 h-8 sm:w-10 sm:h-10 
+              flex items-center justify-center 
+              text-sm sm:text-base font-medium
+              rounded-full border-2 transition-all duration-300
+              ${
+                index === currentSectionIndex
+                  ? 'bg-black text-white border-black shadow-lg scale-110'
+                  : index < currentSectionIndex
+                  ? 'bg-gray-800 text-white border-gray-800'
+                  : 'bg-white text-gray-400 border-gray-300'
+              }
+            `}
+            aria-label={`Section ${index + 1}: ${section.title}`}
+            aria-current={index === currentSectionIndex ? 'step' : undefined}
           >
             {index + 1}
           </div>
           
+          {/* Connection Line */}
           {index < sections.length - 1 && (
-            <div className="flex-1 h-px mx-2 bg-gray-200">
+            <div className="flex-1 h-0.5 mx-2 sm:mx-3 bg-gray-200 relative overflow-hidden">
               <div
-                className={`h-full bg-gray-200 transition-all duration-300 ${
-                  index < currentSectionIndex ? 'w-full' : 'w-0'
-                }`}
-              ></div>
+                className={`
+                  h-full transition-all duration-500 ease-out
+                  ${index < currentSectionIndex ? 'bg-gray-800 w-full' : 'bg-gray-200 w-0'}
+                `}
+              />
             </div>
           )}
         </div>
@@ -46,4 +57,4 @@ const SectionIndicator: React.FC<SectionIndicatorProps> = ({
   );
 };
 
-export default SectionIndicator
+export default SectionIndicator;

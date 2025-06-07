@@ -42,37 +42,51 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   };
 
   return (
-    <div className="max-w-2xl" ref={dropdownRef}>
-      <div
-        className={`relative border-b-2 ${
-          value ? 'border-black' : 'border-gray-300'
-        } cursor-pointer`}
+    <div className="w-full max-w-2xl relative" ref={dropdownRef}>
+      <button
+        type="button"
         onClick={toggleDropdown}
+        className={`
+          w-full px-0 py-4 text-lg sm:text-xl text-left
+          border-0 border-b-2 transition-colors duration-200 ease-out
+          bg-transparent font-light focus:outline-none
+          flex justify-between items-center
+          ${value ? 'border-black text-gray-900' : 'border-gray-300 text-gray-400'}
+        `}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label="Select an option"
       >
-        <div className="px-4 py-3 text-lg flex justify-between items-center">
-          <span className={value ? 'text-black' : 'text-gray-400'}>
-            {selectedOption ? selectedOption.label : 'Select an option...'}
-          </span>
-          <ChevronDown
-            size={20}
-            className={`text-black transition-transform ${isOpen ? 'rotate-180' : ''}`}
-          />
-        </div>
-      </div>
+        <span className="truncate">
+          {selectedOption ? selectedOption.label : 'Select an option...'}
+        </span>
+        <ChevronDown
+          size={20}
+          className={`text-gray-600 transition-transform duration-200 flex-shrink-0 ml-2 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
 
       {isOpen && (
-        <div className="absolute z-10 mt-1 w-full max-w-2xl bg-white shadow-lg border border-black max-h-64 overflow-y-auto animate-dropdown">
+        <div className="absolute z-50 mt-2 w-full bg-white shadow-xl border border-gray-200 rounded-lg max-h-64 overflow-y-auto">
           {options.map((option) => (
-            <div
+            <button
               key={option.value}
-              className={`px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center justify-between ${
-                value === option.value ? 'bg-gray-50 text-black' : 'text-black'
-              }`}
+              type="button"
               onClick={() => handleSelect(option.value)}
+              className={`
+                w-full px-4 py-3 text-left hover:bg-gray-50 
+                transition-colors duration-150 ease-out
+                flex items-center justify-between
+                ${value === option.value ? 'bg-gray-50 text-gray-900' : 'text-gray-700'}
+              `}
+              role="option"
+              aria-selected={value === option.value}
             >
-              {option.label}
-              {value === option.value && <Check size={18} className="text-black" />}
-            </div>
+              <span className="font-light">{option.label}</span>
+              {value === option.value && <Check size={18} className="text-gray-900" />}
+            </button>
           ))}
         </div>
       )}
@@ -80,4 +94,4 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   );
 };
 
-export default DropdownInput
+export default DropdownInput;

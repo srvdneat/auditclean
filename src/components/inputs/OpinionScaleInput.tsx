@@ -26,42 +26,68 @@ const OpinionScaleInput: React.FC<OpinionScaleInputProps> = ({
   const scaleNumbers = Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto">
       <div className="flex flex-col space-y-6">
-        <div className="flex justify-between text-sm text-gray-500 px-2">
-          {minLabel && <span>{minLabel}</span>}
-          {maxLabel && <span>{maxLabel}</span>}
+        {/* Scale Labels */}
+        <div className="flex justify-between text-sm text-gray-600 px-2 font-medium">
+          {minLabel && <span className="text-left max-w-[120px] sm:max-w-none">{minLabel}</span>}
+          {maxLabel && <span className="text-right max-w-[120px] sm:max-w-none">{maxLabel}</span>}
         </div>
         
-        <div className="flex justify-between">
+        {/* Rating Buttons - Mobile Optimized */}
+        <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 sm:gap-3 w-full">
           {scaleNumbers.map((number) => (
-            <div
+            <button
               key={number}
+              type="button"
               onClick={() => handleScaleClick(number)}
-              className={`relative flex flex-col items-center cursor-pointer group`}
-            >
-              <div
-                className={`w-12 h-12 flex items-center justify-center text-lg font-light transition-all ${
+              className={`
+                relative flex items-center justify-center 
+                h-12 sm:h-14 w-full
+                text-base sm:text-lg font-medium
+                transition-all duration-200 ease-out
+                border-2 rounded-lg
+                focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2
+                active:scale-95
+                ${
                   value === number
-                    ? 'bg-black text-white'
-                    : 'bg-gray-100 text-black hover:bg-gray-200'
-                }`}
-              >
-                {number}
-              </div>
-              <div className="mt-2 w-20 text-center">
-                <div className={`h-px bg-gray-300 ${value >= number ? 'bg-black' : ''}`}></div>
-              </div>
-            </div>
+                    ? 'bg-black text-white border-black shadow-lg transform scale-105'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                }
+              `}
+              aria-label={`Rate ${number} out of ${max}`}
+              aria-pressed={value === number}
+            >
+              <span className="select-none">{number}</span>
+              {value === number && (
+                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black rounded-full"></div>
+              )}
+            </button>
           ))}
+        </div>
+
+        {/* Visual Progress Indicator */}
+        <div className="flex justify-center mt-4">
+          <div className="flex space-x-1">
+            {scaleNumbers.map((number) => (
+              <div
+                key={number}
+                className={`w-2 h-1 rounded-full transition-all duration-200 ${
+                  value >= number ? 'bg-black' : 'bg-gray-200'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
       
       {required && value === 0 && (
-        <p className="mt-4 text-sm text-red-500 text-center">Please select a value</p>
+        <p className="mt-4 text-sm text-red-600 text-center font-medium" role="alert">
+          Please select a rating to continue
+        </p>
       )}
     </div>
   );
 };
 
-export default OpinionScaleInput
+export default OpinionScaleInput;

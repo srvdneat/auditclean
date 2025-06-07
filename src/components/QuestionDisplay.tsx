@@ -27,15 +27,19 @@ const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
   };
 
   return (
-    <div className="py-6 animate-fade-in">
-      <h3 className="text-2xl sm:text-3xl font-light text-black mb-2 flex items-start">
-        {question.text}
-        {question.required && (
-          <span className="text-red-500 ml-1">*</span>
-        )}
-      </h3>
+    <div className="w-full animate-fade-in">
+      {/* Question Header */}
+      <div className="mb-8 sm:mb-12">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 leading-tight mb-4">
+          {question.text}
+          {question.required && (
+            <span className="text-red-500 ml-2" aria-label="Required field">*</span>
+          )}
+        </h3>
+      </div>
       
-      <div className="mt-8">
+      {/* Input Component */}
+      <div className="w-full">
         {question.type === 'shortText' && (
           <ShortTextInput
             value={response || ''}
