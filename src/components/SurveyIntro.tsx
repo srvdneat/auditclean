@@ -8,12 +8,14 @@ interface SurveyIntroProps {
 const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
     <div className="h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-4xl w-full text-center animate-fade-in">
-        <img 
-          src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
-          alt="NeatAudit Logo" 
-          className="h-20 sm:h-24 lg:h-28 mx-auto mb-12"
-        />
+      <div className="max-w-4xl w-full text-center animate-fade-in py-8">
+        <div className="mb-16">
+          <img 
+            src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
+            alt="NeatAudit Logo" 
+            className="h-16 sm:h-20 lg:h-24 mx-auto"
+          />
+        </div>
         
         <h1 className="text-3xl sm:text-4xl lg:text-5xl text-black mb-8 leading-tight">
           <span className="font-bold">NeatAudit</span>
