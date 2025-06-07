@@ -64,8 +64,8 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
           onKeyDown={handleKeyDown}
           className="
             w-full px-0 py-4 text-base text-left
-            border-0 border-b-2 border-gray-200
-            focus:border-black focus:outline-none 
+            border-0 border-b border-gray-300
+            focus:border-transparent focus:outline-none 
             transition-all duration-300 ease-out
             bg-transparent font-light
             flex justify-between items-center text-black
