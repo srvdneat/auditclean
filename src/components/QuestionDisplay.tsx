@@ -33,7 +33,7 @@ const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
         <h3 className="text-2xl sm:text-3xl font-light text-black leading-tight mb-4">
           {question.text}
           {question.required && (
-            <span className="text-red-500 ml-2" aria-label="Required field">*</span>
+            <span className="text-red-500 ml-2\" aria-label="Required field">*</span>
           )}
         </h3>
       </div>
