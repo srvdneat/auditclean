@@ -22,26 +22,32 @@ const SectionIndicator: React.FC<SectionIndicatorProps> = ({
           {/* Circular Indicator */}
           <div
             className={`
-              w-3 h-3 rounded-full border transition-all duration-300
+              w-4 h-4 rounded-full border-2 transition-all duration-500 ease-out
+              transform hover:scale-110
               ${
                 index === currentSectionIndex
-                  ? 'bg-black border-black'
+                  ? 'bg-black border-black scale-110 shadow-lg'
                   : index < currentSectionIndex
-                  ? 'bg-black border-black'
-                  : 'bg-white border-gray-300'
+                  ? 'bg-black border-black shadow-md'
+                  : 'bg-white border-gray-300 hover:border-gray-400'
               }
             `}
             aria-label={`Section ${index + 1}: ${section.title}`}
             aria-current={index === currentSectionIndex ? 'step' : undefined}
-          />
+          >
+            {/* Inner pulse for current section */}
+            {index === currentSectionIndex && (
+              <div className="absolute inset-0 rounded-full bg-black opacity-50 animate-ping"></div>
+            )}
+          </div>
           
           {/* Connecting Line */}
           {index < sections.length - 1 && (
-            <div className="flex-1 h-px mx-4 bg-gray-200 relative overflow-hidden">
+            <div className="flex-1 h-0.5 mx-4 bg-gray-200 relative overflow-hidden rounded-full">
               <div
                 className={`
-                  h-full transition-all duration-500 ease-out
-                  ${index < currentSectionIndex ? 'bg-black w-full' : 'bg-gray-200 w-0'}
+                  h-full transition-all duration-700 ease-out rounded-full
+                  ${index < currentSectionIndex ? 'bg-gradient-to-r from-black to-gray-700 w-full' : 'bg-gray-200 w-0'}
                 `}
               />
             </div>

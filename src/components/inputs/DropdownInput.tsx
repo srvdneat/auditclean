@@ -15,6 +15,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   required,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const selectedOption = options.find((option) => option.value === value);
@@ -23,6 +24,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setIsFocused(false);
       }
     };
 
@@ -34,59 +36,97 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+    setIsFocused(!isOpen);
   };
 
   const handleSelect = (optionValue: string) => {
     onChange(optionValue);
     setIsOpen(false);
+    setIsFocused(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleDropdown();
+    } else if (e.key === 'Escape') {
+      setIsOpen(false);
+      setIsFocused(false);
+    }
   };
 
   return (
     <div className="w-full max-w-2xl relative" ref={dropdownRef}>
-      <button
-        type="button"
-        onClick={toggleDropdown}
-        className="
-          w-full px-0 py-3 text-base text-left
-          border-0 border-b border-gray-300 
-          focus:border-black focus:outline-none 
-          transition-colors duration-200 ease-out
-          bg-transparent font-light
-          flex justify-between items-center text-black
-        "
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-        aria-label="Select an option"
-      >
-        <span className={`truncate ${value ? 'text-black' : 'text-gray-400'}`}>
-          {selectedOption ? selectedOption.label : 'Select an option...'}
-        </span>
-        <ChevronDown
-          size={20}
-          className={`text-black transition-transform duration-200 flex-shrink-0 ml-2 ${
-            isOpen ? 'rotate-180' : ''
-          }`}
-        />
-      </button>
+      <div className="relative">
+        <button
+          type="button"
+          onClick={toggleDropdown}
+          onKeyDown={handleKeyDown}
+          className="
+            w-full px-0 py-4 text-base text-left
+            border-0 border-b-2 border-gray-200
+            focus:border-black focus:outline-none 
+            transition-all duration-300 ease-out
+            bg-transparent font-light
+            flex justify-between items-center text-black
+            transform focus:scale-[1.02] focus:translate-y-[-2px]
+            min-h-[48px] touch-manipulation
+            hover:bg-gray-50 hover:scale-[1.01]
+          "
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          aria-label="Select an option"
+        >
+          <span className={`truncate transition-colors duration-200 ${value ? 'text-black' : 'text-gray-400'}`}>
+            {selectedOption ? selectedOption.label : 'Select an option...'}
+          </span>
+          <ChevronDown
+            size={20}
+            className={`text-black transition-all duration-300 flex-shrink-0 ml-2 ${
+              isOpen ? 'rotate-180 scale-110' : ''
+            }`}
+          />
+        </button>
+
+        {/* Animated underline */}
+        <div className={`
+          absolute bottom-0 left-0 h-0.5 bg-black
+          transition-all duration-300 ease-out
+          ${isFocused || isOpen || value ? 'w-full' : 'w-0'}
+        `} />
+        
+        {/* Focus background glow */}
+        <div className={`
+          absolute inset-0 -z-10 rounded-lg
+          transition-all duration-300 ease-out
+          ${isFocused || isOpen ? 'bg-gray-50 scale-105' : 'bg-transparent scale-100'}
+        `} />
+      </div>
 
       {isOpen && (
-        <div className="absolute z-50 mt-1 w-full bg-white shadow-xl border border-gray-300 rounded-sm max-h-64 overflow-y-auto">
-          {options.map((option) => (
+        <div className="absolute z-50 mt-2 w-full bg-white shadow-2xl border border-gray-200 rounded-lg max-h-64 overflow-y-auto animate-dropdown">
+          {options.map((option, index) => (
             <button
               key={option.value}
               type="button"
               onClick={() => handleSelect(option.value)}
               className="
                 w-full px-4 py-3 text-left hover:bg-gray-50 
-                transition-colors duration-150 ease-out
+                transition-all duration-200 ease-out
                 flex items-center justify-between text-black text-base
-                bg-white
+                bg-white first:rounded-t-lg last:rounded-b-lg
+                focus:bg-gray-100 focus:outline-none
+                min-h-[48px] touch-manipulation
+                transform hover:scale-[1.02] hover:translate-x-1
               "
               role="option"
               aria-selected={value === option.value}
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               <span className="font-light">{option.label}</span>
-              {value === option.value && <Check size={18} className="text-black" />}
+              {value === option.value && (
+                <Check size={18} className="text-black animate-scale-in" />
+              )}
             </button>
           ))}
         </div>

@@ -5,7 +5,7 @@ import ProgressBar from './ProgressBar';
 import SectionIndicator from './SectionIndicator';
 import SurveyIntro from './SurveyIntro';
 import SurveyCompletion from './SurveyCompletion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
 import { calculateSurveyScore } from '../utils/scoring';
 import { supabase } from '../lib/supabase';
 
@@ -35,8 +35,10 @@ const SurveyForm: React.FC = () => {
       if (showIntro || showCompletion) return;
       
       if (e.key === 'Enter' || e.key === 'ArrowDown') {
+        e.preventDefault();
         handleNext();
       } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
         handlePrevious();
       }
     };
@@ -131,7 +133,6 @@ const SurveyForm: React.FC = () => {
     setTimeout(() => {
       goToNextQuestion();
       setTransition(false);
-      // Clear validation error when moving to next question
       setValidationError(null);
     }, 200);
   };
@@ -143,7 +144,6 @@ const SurveyForm: React.FC = () => {
     setTimeout(() => {
       goToPreviousQuestion();
       setTransition(false);
-      // Clear validation error when moving to previous question
       setValidationError(null);
     }, 200);
   };
@@ -186,9 +186,9 @@ const SurveyForm: React.FC = () => {
             <img 
               src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
               alt="NeatAudit Logo" 
-              className="h-24"
+              className="h-24 transition-transform duration-300 hover:scale-105"
             />
-            <h1 className="text-2xl font-black text-black" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900 }}>
+            <h1 className="text-2xl font-black text-black transition-colors duration-300 hover:text-gray-700" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900 }}>
               NEATAUDIT
             </h1>
           </div>
@@ -208,7 +208,7 @@ const SurveyForm: React.FC = () => {
         <div className="max-w-4xl mx-auto w-full flex flex-col justify-center min-h-0">
           {/* Section Header */}
           <div className="mb-8 text-center">
-            <h2 className="text-lg sm:text-xl font-medium text-black mb-2">
+            <h2 className="text-lg sm:text-xl font-medium text-black mb-2 transition-colors duration-300">
               {currentSection.title}
             </h2>
             {currentSection.description && (
@@ -219,8 +219,8 @@ const SurveyForm: React.FC = () => {
           </div>
           
           {/* Question Content - Centered */}
-          <div className={`flex flex-col items-center justify-center transition-all duration-200 ease-out ${
-            transition ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+          <div className={`flex flex-col items-center justify-center transition-all duration-300 ease-out ${
+            transition ? 'opacity-0 translate-y-4 scale-95' : 'opacity-100 translate-y-0 scale-100'
           }`}>
             <QuestionDisplay 
               question={currentQuestion}
@@ -231,13 +231,19 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-6 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl w-full\" role="alert">
-                <p className="text-sm text-red-700 font-medium text-center">{validationError}</p>
+              <div className="mt-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg max-w-2xl w-full animate-slide-down" role="alert">
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-3"></div>
+                  <p className="text-sm text-red-700 font-medium">{validationError}</p>
+                </div>
               </div>
             )}
             {submitError && (
-              <div className="mt-6 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl w-full" role="alert">
-                <p className="text-sm text-red-700 font-medium whitespace-pre-line text-center">{submitError}</p>
+              <div className="mt-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg max-w-2xl w-full animate-slide-down" role="alert">
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-3"></div>
+                  <p className="text-sm text-red-700 font-medium whitespace-pre-line">{submitError}</p>
+                </div>
               </div>
             )}
           </div>
@@ -251,10 +257,11 @@ const SurveyForm: React.FC = () => {
             <button
               onClick={handlePrevious}
               disabled={isFirstQuestion()}
-              className={`flex items-center space-x-2 px-3 py-2 transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-4 py-3 transition-all duration-300 ease-out rounded-lg
+                min-h-[48px] touch-manipulation transform hover:scale-105 active:scale-95 ${
                 isFirstQuestion() 
                   ? 'text-gray-400 cursor-not-allowed' 
-                  : 'text-black hover:text-gray-600'
+                  : 'text-black hover:text-gray-600 hover:bg-gray-50'
               }`}
               aria-label="Go to previous question"
             >
@@ -265,21 +272,25 @@ const SurveyForm: React.FC = () => {
             <button
               onClick={handleNext}
               disabled={!canContinue || submitting}
-              className={`flex items-center space-x-2 px-4 py-2 transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-6 py-3 transition-all duration-300 ease-out rounded-lg
+                min-h-[48px] touch-manipulation transform hover:scale-105 active:scale-95 ${
                 canContinue && !submitting
-                  ? 'bg-black text-white hover:bg-gray-800'
+                  ? 'bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl'
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
               }`}
               aria-label={isLastQuestion() ? 'Submit survey' : 'Go to next question'}
             >
-              <span className="text-sm font-medium">{isLastQuestion() ? (submitting ? 'Submitting...' : 'Complete') : 'Continue'}</span>
-              <ArrowRight size={16} />
+              {submitting && <Loader2 size={16} className="animate-spin" />}
+              <span className="text-sm font-medium">
+                {isLastQuestion() ? (submitting ? 'Submitting...' : 'Complete') : 'Continue'}
+              </span>
+              {!submitting && <ArrowRight size={16} />}
             </button>
           </div>
           
           {/* Progress Indicator */}
           <div className="text-center">
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 transition-colors duration-300">
               Question {answeredQuestions} of {totalQuestions}
             </p>
           </div>

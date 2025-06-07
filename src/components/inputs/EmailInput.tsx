@@ -8,6 +8,7 @@ interface EmailInputProps {
 
 const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) => {
   const [error, setError] = useState<string | null>(null);
+  const [isFocused, setIsFocused] = useState(false);
 
   const validateEmail = (email: string) => {
     if (!email && required) {
@@ -36,7 +37,12 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
     }
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
   const handleBlur = () => {
+    setIsFocused(false);
     if (value) {
       validateEmail(value);
     }
@@ -44,30 +50,67 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
 
   return (
     <div className="w-full max-w-2xl">
-      <input
-        type="email"
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        required={required}
-        className="
-          w-full px-0 py-3 text-base
-          border-0 border-b border-gray-300 
-          focus:border-black focus:outline-none 
-          transition-colors duration-200 ease-out
-          bg-transparent placeholder-gray-400
-          font-light text-black
-        "
-        placeholder="example@email.com"
-        autoFocus
-        aria-label="Email input field"
-        aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={error ? 'email-error' : undefined}
-      />
+      <div className="relative">
+        <input
+          type="email"
+          value={value}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          required={required}
+          className={`
+            w-full px-0 py-4 text-base
+            border-0 border-b-2 
+            focus:outline-none 
+            transition-all duration-300 ease-out
+            bg-transparent placeholder-gray-400
+            font-light text-black
+            transform focus:scale-[1.02] focus:translate-y-[-2px]
+            min-h-[48px] touch-manipulation
+            ${error ? 'border-red-300 focus:border-red-500' : 'border-gray-200 focus:border-black'}
+          `}
+          placeholder="example@email.com"
+          autoFocus
+          aria-label="Email input field"
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={error ? 'email-error' : undefined}
+        />
+        
+        {/* Animated underline */}
+        <div className={`
+          absolute bottom-0 left-0 h-0.5
+          transition-all duration-300 ease-out
+          ${error 
+            ? 'bg-red-500' 
+            : 'bg-black'
+          }
+          ${isFocused || value ? 'w-full' : 'w-0'}
+        `} />
+        
+        {/* Focus background glow */}
+        <div className={`
+          absolute inset-0 -z-10 rounded-lg
+          transition-all duration-300 ease-out
+          ${isFocused 
+            ? error 
+              ? 'bg-red-50 scale-105' 
+              : 'bg-gray-50 scale-105'
+            : 'bg-transparent scale-100'
+          }
+        `} />
+      </div>
+      
       {error && (
-        <p id="email-error\" className="mt-2 text-sm text-red-600 font-medium\" role="alert">
-          {error}
-        </p>
+        <div className="mt-3 animate-slide-down">
+          <p 
+            id="email-error" 
+            className="text-sm text-red-600 font-medium flex items-center gap-2" 
+            role="alert"
+          >
+            <span className="w-1 h-1 bg-red-500 rounded-full animate-pulse"></span>
+            {error}
+          </p>
+        </div>
       )}
     </div>
   );

@@ -30,17 +30,29 @@
   button:focus-visible,
   input:focus-visible,
   select:focus-visible {
-    @apply ring-2 ring-black ring-offset-2;
+    @apply ring-2 ring-black ring-offset-2 ring-opacity-50;
   }
 }
 
 @layer utilities {
   .animate-fade-in {
-    animation: fadeIn 0.4s ease-out;
+    animation: fadeIn 0.5s ease-out;
   }
   
   .animate-dropdown {
-    animation: dropdown 0.3s ease-out;
+    animation: dropdown 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
   }
 
   .animate-pulse-slow {
@@ -67,7 +79,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -78,11 +90,44 @@
 @keyframes dropdown {
   from {
     opacity: 0;
-    transform: translateY(-8px) scale(0.95);
+    transform: translateY(-12px) scale(0.95);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
@@ -108,6 +153,12 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  
+  .animate-ping,
+  .animate-pulse,
+  .animate-shimmer {
+    animation: none !important;
+  }
 }
 
 /* High contrast mode support */
@@ -119,12 +170,21 @@
   .border-gray-300 {
     @apply border-gray-600;
   }
+  
+  .focus\:ring-black:focus {
+    @apply ring-gray-900;
+  }
 }
 
 /* Print styles */
 @media print {
   .no-print {
     display: none !important;
+  }
+  
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -133,4 +193,38 @@
   .min-h-screen {
     min-height: -webkit-fill-available;
   }
+}
+
+/* Enhanced focus styles for better accessibility */
+@media (prefers-reduced-motion: no-preference) {
+  button:focus-visible,
+  input:focus-visible {
+    transition: all 0.2s ease-out;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
 }
