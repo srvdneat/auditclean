@@ -180,7 +180,7 @@ const SurveyForm: React.FC = () => {
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-12 mb-6"
+            className="h-24 mb-6"
           />
           <div className="mb-6">
             <ProgressBar percentage={progressPercentage} />
@@ -220,7 +220,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                 <p className="text-sm text-red-700 font-medium">{validationError}</p>
               </div>
             )}
