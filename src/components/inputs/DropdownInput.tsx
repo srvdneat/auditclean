@@ -47,29 +47,29 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
         type="button"
         onClick={toggleDropdown}
         className={`
-          w-full px-0 py-4 text-lg sm:text-xl text-left
+          w-full px-0 py-3 text-lg text-left
           border-0 border-b transition-colors duration-200 ease-out
           bg-transparent font-light focus:outline-none
-          flex justify-between items-center
-          ${value ? 'border-gray-500 text-gray-900' : 'border-gray-300 text-gray-400'}
+          flex justify-between items-center text-black
+          ${value ? 'border-black' : 'border-gray-300'}
         `}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-label="Select an option"
       >
-        <span className="truncate">
+        <span className={`truncate ${value ? 'text-black' : 'text-gray-400'}`}>
           {selectedOption ? selectedOption.label : 'Select an option...'}
         </span>
         <ChevronDown
           size={20}
-          className={`text-gray-600 transition-transform duration-200 flex-shrink-0 ml-2 ${
+          className={`text-black transition-transform duration-200 flex-shrink-0 ml-2 ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 mt-2 w-full bg-white shadow-xl border border-gray-200 rounded-lg max-h-64 overflow-y-auto">
+        <div className="absolute z-50 mt-1 w-full bg-white shadow-xl border border-black rounded-sm max-h-64 overflow-y-auto">
           {options.map((option) => (
             <button
               key={option.value}
@@ -78,14 +78,14 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
               className={`
                 w-full px-4 py-3 text-left hover:bg-gray-50 
                 transition-colors duration-150 ease-out
-                flex items-center justify-between
-                ${value === option.value ? 'bg-gray-50 text-gray-900' : 'text-gray-700'}
+                flex items-center justify-between text-black
+                ${value === option.value ? 'bg-gray-50' : ''}
               `}
               role="option"
               aria-selected={value === option.value}
             >
               <span className="font-light">{option.label}</span>
-              {value === option.value && <Check size={18} className="text-gray-900" />}
+              {value === option.value && <Check size={18} className="text-black" />}
             </button>
           ))}
         </div>

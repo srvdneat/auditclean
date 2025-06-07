@@ -45,19 +45,19 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
     <div className="w-full max-w-2xl">
       {/* Selected Items */}
       {value.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-4">
           {value.map((selectedValue) => {
             const option = options.find((o) => o.value === selectedValue);
             return (
               <div
                 key={selectedValue}
-                className="inline-flex items-center gap-2 px-3 py-2 bg-gray-100 text-gray-900 text-sm font-medium rounded-lg"
+                className="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 text-black text-sm font-medium rounded-sm"
               >
                 <span>{option?.label}</span>
                 <button
                   type="button"
                   onClick={(e) => handleRemoveOption(selectedValue, e)}
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-gray-600 hover:text-black transition-colors"
                   aria-label={`Remove ${option?.label}`}
                 >
                   <X size={14} />
@@ -69,25 +69,25 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
       )}
 
       {/* Search Input */}
-      <div className="relative mb-4">
+      <div className="relative mb-2">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder={`Search and select ${limit ? `up to ${limit} options` : 'options'}...`}
           className="
-            w-full px-0 py-4 text-lg sm:text-xl
+            w-full px-0 py-3 text-lg
             border-0 border-b border-gray-300 
-            focus:border-gray-500 focus:outline-none 
+            focus:border-black focus:outline-none 
             transition-colors duration-200 ease-out
             bg-transparent placeholder-gray-400
-            font-light
+            font-light text-black
           "
           disabled={atLimit}
           aria-label="Search options"
         />
         {limit && (
-          <div className="absolute right-0 bottom-4 text-sm text-gray-500 font-medium">
+          <div className="absolute right-0 bottom-3 text-sm text-gray-500 font-medium">
             {value.length}/{limit} selected
           </div>
         )}
@@ -95,9 +95,9 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
 
       {/* Options List */}
       {searchTerm && (
-        <div className="border border-gray-200 rounded-lg bg-white shadow-lg max-h-64 overflow-y-auto">
+        <div className="border border-black rounded-sm bg-white shadow-lg max-h-64 overflow-y-auto">
           {filteredOptions.length === 0 ? (
-            <div className="px-4 py-6 text-gray-500 text-center font-light">
+            <div className="px-4 py-4 text-gray-500 text-center font-light">
               No options found
             </div>
           ) : (
@@ -111,8 +111,8 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                   className={`
                     w-full px-4 py-3 text-left hover:bg-gray-50 
                     transition-colors duration-150 ease-out
-                    flex items-center justify-between
-                    ${isSelected ? 'bg-gray-50 text-gray-900' : 'text-gray-700'}
+                    flex items-center justify-between text-black
+                    ${isSelected ? 'bg-gray-50' : ''}
                     ${atLimit && !isSelected ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   `}
                   disabled={atLimit && !isSelected}
@@ -120,7 +120,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                   aria-selected={isSelected}
                 >
                   <span className="font-light">{option.label}</span>
-                  {isSelected && <Check size={18} className="text-gray-900" />}
+                  {isSelected && <Check size={18} className="text-black" />}
                 </button>
               );
             })
@@ -129,7 +129,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
       )}
 
       {required && value.length === 0 && (
-        <p className="mt-4 text-sm text-red-600 font-medium" role="alert">
+        <p className="mt-3 text-sm text-red-600 font-medium" role="alert">
           Please select at least one option to continue
         </p>
       )}

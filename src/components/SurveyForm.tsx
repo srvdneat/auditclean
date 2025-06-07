@@ -175,15 +175,15 @@ const SurveyForm: React.FC = () => {
   return (
     <div className="flex flex-col bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
       {/* Header Section */}
-      <header className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-3">
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-2">
         <div className="max-w-4xl mx-auto">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-8 mb-4"
+            className="h-8 mb-3"
           />
           <ProgressBar percentage={progressPercentage} />
-          <div className="mt-4">
+          <div className="mt-3">
             <SectionIndicator 
               sections={sections} 
               currentSectionIndex={currentSectionIndex} 
@@ -193,10 +193,10 @@ const SurveyForm: React.FC = () => {
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8 py-4">
-        <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-4xl mx-auto w-full">
           {/* Section Header */}
-          <div className="mb-4">
+          <div className="mb-6">
             <h2 className="text-sm font-medium text-black mb-1">
               {currentSection.title}
             </h2>
@@ -207,30 +207,28 @@ const SurveyForm: React.FC = () => {
             )}
           </div>
           
-          {/* Question Content - Centered */}
-          <div className={`flex-1 flex items-center justify-center transition-all duration-200 ease-out ${
+          {/* Question Content */}
+          <div className={`transition-all duration-200 ease-out ${
             transition ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
           }`}>
-            <div className="w-full">
-              <QuestionDisplay 
-                question={currentQuestion}
-                response={response}
-                sectionIndex={currentSectionIndex}
-                questionIndex={currentQuestionIndex}
-              />
-              
-              {/* Error Messages */}
-              {validationError && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
-                  <p className="text-sm text-red-700 font-medium">{validationError}</p>
-                </div>
-              )}
-              {submitError && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
-                  <p className="text-sm text-red-700 font-medium whitespace-pre-line">{submitError}</p>
-                </div>
-              )}
-            </div>
+            <QuestionDisplay 
+              question={currentQuestion}
+              response={response}
+              sectionIndex={currentSectionIndex}
+              questionIndex={currentQuestionIndex}
+            />
+            
+            {/* Error Messages */}
+            {validationError && (
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
+                <p className="text-sm text-red-700 font-medium">{validationError}</p>
+              </div>
+            )}
+            {submitError && (
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
+                <p className="text-sm text-red-700 font-medium whitespace-pre-line">{submitError}</p>
+              </div>
+            )}
           </div>
         </div>
       </main>

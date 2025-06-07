@@ -19,12 +19,12 @@ const ShortTextInput: React.FC<ShortTextInputProps> = ({ value, onChange, requir
         onChange={handleChange}
         required={required}
         className="
-          w-full px-0 py-4 text-lg sm:text-xl
+          w-full px-0 py-3 text-lg
           border-0 border-b border-gray-300 
-          focus:border-gray-500 focus:outline-none 
+          focus:border-black focus:outline-none 
           transition-colors duration-200 ease-out
           bg-transparent placeholder-gray-400
-          font-light
+          font-light text-black
         "
         placeholder="Type your answer here..."
         autoFocus
