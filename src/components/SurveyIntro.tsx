@@ -7,8 +7,8 @@ interface SurveyIntroProps {
 
 const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl w-full bg-white p-8 sm:p-16 animate-fade-in border border-black">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-4xl w-full p-8 sm:p-16 animate-fade-in">
         <div className="text-center">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
@@ -40,7 +40,7 @@ const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
           
           <button
             onClick={onStart}
-            className="inline-flex items-center px-8 py-4 bg-black hover:bg-accent text-white font-light transition-colors text-lg"
+            className="inline-flex items-center px-8 py-4 bg-black hover:bg-gray-800 text-white font-light transition-colors text-lg"
           >
             <span>Start the diagnostic</span>
             <ArrowRight className="ml-3" size={20} />

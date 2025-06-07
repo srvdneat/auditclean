@@ -7,11 +7,11 @@ interface SurveyCompletionProps {
 }
 
 const SurveyCompletion: React.FC<SurveyCompletionProps> = ({ onRestart, responses }) => {
-  const firstName = responses['onboarding-first-name'] || '';
+  const firstName = responses['onboarding-first_name'] || '';
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl w-full bg-white p-8 sm:p-12 animate-fade-in border border-black">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-3xl w-full p-8 sm:p-12 animate-fade-in">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 text-black mb-6">
             <Check size={32} />

@@ -173,17 +173,17 @@ const SurveyForm: React.FC = () => {
   const progressPercentage = (answeredQuestions / totalQuestions) * 100;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Header Section */}
-      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-3">
         <div className="max-w-5xl mx-auto">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-16 sm:h-20 mb-6 sm:mb-8"
+            className="h-12 sm:h-14 mb-4 sm:mb-6"
           />
           <ProgressBar percentage={progressPercentage} />
-          <div className="mt-4">
+          <div className="mt-3">
             <SectionIndicator 
               sections={sections} 
               currentSectionIndex={currentSectionIndex} 
@@ -193,11 +193,11 @@ const SurveyForm: React.FC = () => {
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8 pb-6">
+      <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
           {/* Section Header */}
-          <div className="mb-6 sm:mb-8">
-            <h2 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">
+          <div className="mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-medium text-gray-900 mb-1">
               {currentSection.title}
             </h2>
             {currentSection.description && (
@@ -207,11 +207,11 @@ const SurveyForm: React.FC = () => {
             )}
           </div>
           
-          {/* Question Content */}
-          <div className={`flex-1 flex flex-col transition-all duration-200 ease-out ${
+          {/* Question Content - Centered */}
+          <div className={`flex-1 flex items-center justify-center transition-all duration-200 ease-out ${
             transition ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
           }`}>
-            <div className="flex-1 flex flex-col justify-center min-h-[400px] sm:min-h-[500px]">
+            <div className="w-full">
               <QuestionDisplay 
                 question={currentQuestion}
                 response={response}
@@ -221,7 +221,7 @@ const SurveyForm: React.FC = () => {
               
               {/* Error Messages */}
               {validationError && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                   <p className="text-sm text-red-700 font-medium">{validationError}</p>
                 </div>
               )}
@@ -236,9 +236,9 @@ const SurveyForm: React.FC = () => {
       </main>
       
       {/* Footer Navigation */}
-      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 bg-white border-t border-gray-200">
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-4 bg-white border-t border-gray-200">
         <div className="max-w-5xl mx-auto">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center mb-3">
             <button
               onClick={handlePrevious}
               disabled={isFirstQuestion()}
