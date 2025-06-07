@@ -175,15 +175,15 @@ const SurveyForm: React.FC = () => {
   return (
     <div className="flex flex-col bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
       {/* Header Section */}
-      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-3">
         <div className="max-w-4xl mx-auto">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-10 mb-6"
+            className="h-8 mb-4"
           />
           <ProgressBar percentage={progressPercentage} />
-          <div className="mt-6">
+          <div className="mt-4">
             <SectionIndicator 
               sections={sections} 
               currentSectionIndex={currentSectionIndex} 
@@ -193,15 +193,15 @@ const SurveyForm: React.FC = () => {
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col">
           {/* Section Header */}
-          <div className="mb-6">
-            <h2 className="text-sm font-medium text-gray-600 mb-1">
+          <div className="mb-4">
+            <h2 className="text-sm font-medium text-black mb-1">
               {currentSection.title}
             </h2>
             {currentSection.description && (
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-600">
                 {currentSection.description}
               </p>
             )}
@@ -221,7 +221,7 @@ const SurveyForm: React.FC = () => {
               
               {/* Error Messages */}
               {validationError && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                   <p className="text-sm text-red-700 font-medium">{validationError}</p>
                 </div>
               )}
@@ -236,13 +236,13 @@ const SurveyForm: React.FC = () => {
       </main>
       
       {/* Footer Navigation */}
-      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6">
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center mb-3">
             <button
               onClick={handlePrevious}
               disabled={isFirstQuestion()}
-              className={`flex items-center space-x-2 px-4 py-2 transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-3 py-2 transition-all duration-200 ${
                 isFirstQuestion() 
                   ? 'text-gray-400 cursor-not-allowed' 
                   : 'text-black hover:text-gray-600'
@@ -256,7 +256,7 @@ const SurveyForm: React.FC = () => {
             <button
               onClick={handleNext}
               disabled={!canContinue || submitting}
-              className={`flex items-center space-x-2 px-6 py-2 transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-4 py-2 transition-all duration-200 ${
                 canContinue && !submitting
                   ? 'bg-black text-white hover:bg-gray-800'
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
@@ -270,7 +270,7 @@ const SurveyForm: React.FC = () => {
           
           {/* Progress Indicator */}
           <div className="text-center">
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-600">
               Question {answeredQuestions} of {totalQuestions}
             </p>
           </div>
