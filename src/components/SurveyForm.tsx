@@ -131,6 +131,8 @@ const SurveyForm: React.FC = () => {
     setTimeout(() => {
       goToNextQuestion();
       setTransition(false);
+      // Clear validation error when moving to next question
+      setValidationError(null);
     }, 200);
   };
 
@@ -141,6 +143,8 @@ const SurveyForm: React.FC = () => {
     setTimeout(() => {
       goToPreviousQuestion();
       setTransition(false);
+      // Clear validation error when moving to previous question
+      setValidationError(null);
     }, 200);
   };
 
@@ -227,7 +231,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-6 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl w-full\" role="alert">
+              <div className="mt-6 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl w-full" role="alert">
                 <p className="text-sm text-red-700 font-medium text-center">{validationError}</p>
               </div>
             )}

@@ -77,12 +77,6 @@ const OpinionScaleInput: React.FC<OpinionScaleInputProps> = ({
           </div>
         </div>
       </div>
-      
-      {required && value === 0 && (
-        <p className="mt-3 text-sm text-red-600 text-center font-medium" role="alert">
-          Please select a rating to continue
-        </p>
-      )}
     </div>
   );
 };
