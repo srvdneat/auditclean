@@ -175,33 +175,33 @@ const SurveyForm: React.FC = () => {
   return (
     <div className="flex flex-col bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
       {/* Header Section */}
-      <header className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-2">
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
         <div className="max-w-4xl mx-auto">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-8 mb-3"
+            className="h-8 mb-4"
           />
-          <ProgressBar percentage={progressPercentage} />
-          <div className="mt-3">
-            <SectionIndicator 
-              sections={sections} 
-              currentSectionIndex={currentSectionIndex} 
-            />
+          <div className="mb-4">
+            <ProgressBar percentage={progressPercentage} />
           </div>
+          <SectionIndicator 
+            sections={sections} 
+            currentSectionIndex={currentSectionIndex} 
+          />
         </div>
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6">
         <div className="max-w-4xl mx-auto w-full">
           {/* Section Header */}
-          <div className="mb-6">
-            <h2 className="text-sm font-medium text-black mb-1">
+          <div className="mb-8">
+            <h2 className="text-lg sm:text-xl font-medium text-black mb-2">
               {currentSection.title}
             </h2>
             {currentSection.description && (
-              <p className="text-xs text-gray-600">
+              <p className="text-sm text-gray-600 font-light">
                 {currentSection.description}
               </p>
             )}
@@ -220,7 +220,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                 <p className="text-sm text-red-700 font-medium">{validationError}</p>
               </div>
             )}
@@ -234,9 +234,9 @@ const SurveyForm: React.FC = () => {
       </main>
       
       {/* Footer Navigation */}
-      <footer className="w-full px-4 sm:px-6 lg:px-8 py-4">
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-3">
+          <div className="flex justify-between items-center mb-4">
             <button
               onClick={handlePrevious}
               disabled={isFirstQuestion()}

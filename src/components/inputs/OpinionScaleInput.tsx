@@ -44,7 +44,7 @@ const OpinionScaleInput: React.FC<OpinionScaleInputProps> = ({
               className={`
                 relative flex items-center justify-center 
                 h-10 w-full
-                text-base font-medium
+                text-sm font-medium
                 transition-all duration-200 ease-out
                 border rounded-sm
                 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1

@@ -51,7 +51,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
         onBlur={handleBlur}
         required={required}
         className={`
-          w-full px-0 py-3 text-lg
+          w-full px-0 py-3 text-base
           border-0 border-b transition-colors duration-200 ease-out
           bg-transparent placeholder-gray-400 font-light text-black
           focus:outline-none
@@ -64,7 +64,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
         aria-describedby={error ? 'email-error' : undefined}
       />
       {error && (
-        <p id="email-error\" className="mt-2 text-sm text-red-600 font-medium\" role="alert">
+        <p id="email-error" className="mt-2 text-sm text-red-600 font-medium" role="alert">
           {error}
         </p>
       )}

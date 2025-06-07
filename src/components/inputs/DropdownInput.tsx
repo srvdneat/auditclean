@@ -47,7 +47,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
         type="button"
         onClick={toggleDropdown}
         className={`
-          w-full px-0 py-3 text-lg text-left
+          w-full px-0 py-3 text-base text-left
           border-0 border-b transition-colors duration-200 ease-out
           bg-transparent font-light focus:outline-none
           flex justify-between items-center text-black
@@ -78,7 +78,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
               className={`
                 w-full px-4 py-3 text-left hover:bg-gray-50 
                 transition-colors duration-150 ease-out
-                flex items-center justify-between text-black
+                flex items-center justify-between text-black text-base
                 ${value === option.value ? 'bg-gray-50' : ''}
               `}
               role="option"

@@ -19,7 +19,7 @@ const ShortTextInput: React.FC<ShortTextInputProps> = ({ value, onChange, requir
         onChange={handleChange}
         required={required}
         className="
-          w-full px-0 py-3 text-lg
+          w-full px-0 py-3 text-base
           border-0 border-b border-gray-300 
           focus:border-black focus:outline-none 
           transition-colors duration-200 ease-out

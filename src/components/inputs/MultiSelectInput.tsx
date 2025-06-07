@@ -76,7 +76,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder={`Search and select ${limit ? `up to ${limit} options` : 'options'}...`}
           className="
-            w-full px-0 py-3 text-lg
+            w-full px-0 py-3 text-base
             border-0 border-b border-gray-300 
             focus:border-black focus:outline-none 
             transition-colors duration-200 ease-out
@@ -111,7 +111,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                   className={`
                     w-full px-4 py-3 text-left hover:bg-gray-50 
                     transition-colors duration-150 ease-out
-                    flex items-center justify-between text-black
+                    flex items-center justify-between text-black text-base
                     ${isSelected ? 'bg-gray-50' : ''}
                     ${atLimit && !isSelected ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   `}
