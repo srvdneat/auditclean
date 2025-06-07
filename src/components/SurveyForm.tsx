@@ -227,7 +227,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
                 <p className="text-sm text-red-700 font-medium">{validationError}</p>
               </div>
             )}
