@@ -50,13 +50,14 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
         onChange={handleChange}
         onBlur={handleBlur}
         required={required}
-        className={`
+        className="
           w-full px-0 py-3 text-base
-          border-0 border-b transition-colors duration-200 ease-out
-          bg-transparent placeholder-gray-400 font-light text-black
-          focus:outline-none
-          ${error ? 'border-red-500' : 'border-gray-300 focus:border-black'}
-        `}
+          border-0 border-b border-gray-300 
+          focus:border-black focus:outline-none 
+          transition-colors duration-200 ease-out
+          bg-transparent placeholder-gray-400
+          font-light text-black
+        "
         placeholder="example@email.com"
         autoFocus
         aria-label="Email input field"
@@ -64,7 +65,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
         aria-describedby={error ? 'email-error' : undefined}
       />
       {error && (
-        <p id="email-error\" className="mt-2 text-sm text-red-600 font-medium\" role="alert">
+        <p id="email-error" className="mt-2 text-sm text-red-600 font-medium" role="alert">
           {error}
         </p>
       )}

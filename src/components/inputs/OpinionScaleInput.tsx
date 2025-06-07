@@ -51,8 +51,8 @@ const OpinionScaleInput: React.FC<OpinionScaleInputProps> = ({
                 active:scale-95
                 ${
                   value === number
-                    ? 'bg-black text-white border-black'
-                    : 'bg-white text-black border-gray-300 hover:border-black hover:bg-gray-50'
+                    ? 'bg-gray-900 text-white border-gray-900'
+                    : 'bg-white text-black border-gray-300 hover:border-gray-600 hover:bg-gray-50'
                 }
               `}
               aria-label={`Rate ${number} out of ${max}`}
@@ -70,7 +70,7 @@ const OpinionScaleInput: React.FC<OpinionScaleInputProps> = ({
               <div
                 key={number}
                 className={`w-2 h-1 rounded-full transition-all duration-200 ${
-                  value >= number ? 'bg-black' : 'bg-gray-200'
+                  value >= number ? 'bg-gray-900' : 'bg-gray-200'
                 }`}
               />
             ))}

@@ -46,13 +46,14 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
       <button
         type="button"
         onClick={toggleDropdown}
-        className={`
+        className="
           w-full px-0 py-3 text-base text-left
-          border-0 border-b transition-colors duration-200 ease-out
-          bg-transparent font-light focus:outline-none
+          border-0 border-b border-gray-300 
+          focus:border-black focus:outline-none 
+          transition-colors duration-200 ease-out
+          bg-transparent font-light
           flex justify-between items-center text-black
-          ${value ? 'border-black' : 'border-gray-300'}
-        `}
+        "
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-label="Select an option"
@@ -69,18 +70,18 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 mt-1 w-full bg-white shadow-xl border border-black rounded-sm max-h-64 overflow-y-auto">
+        <div className="absolute z-50 mt-1 w-full bg-white shadow-xl border border-gray-300 rounded-sm max-h-64 overflow-y-auto">
           {options.map((option) => (
             <button
               key={option.value}
               type="button"
               onClick={() => handleSelect(option.value)}
-              className={`
+              className="
                 w-full px-4 py-3 text-left hover:bg-gray-50 
                 transition-colors duration-150 ease-out
                 flex items-center justify-between text-black text-base
-                ${value === option.value ? 'bg-gray-50' : ''}
-              `}
+                bg-white
+              "
               role="option"
               aria-selected={value === option.value}
             >

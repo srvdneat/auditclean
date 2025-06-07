@@ -95,7 +95,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
 
       {/* Options List */}
       {searchTerm && (
-        <div className="border border-black rounded-sm bg-white shadow-lg max-h-64 overflow-y-auto">
+        <div className="border border-gray-300 rounded-sm bg-white shadow-lg max-h-64 overflow-y-auto">
           {filteredOptions.length === 0 ? (
             <div className="px-4 py-4 text-gray-500 text-center font-light">
               No options found
@@ -108,13 +108,12 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                   key={option.value}
                   type="button"
                   onClick={() => handleToggleOption(option.value)}
-                  className={`
+                  className="
                     w-full px-4 py-3 text-left hover:bg-gray-50 
                     transition-colors duration-150 ease-out
                     flex items-center justify-between text-black text-base
-                    ${isSelected ? 'bg-gray-50' : ''}
-                    ${atLimit && !isSelected ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-                  `}
+                    bg-white
+                  "
                   disabled={atLimit && !isSelected}
                   role="option"
                   aria-selected={isSelected}
