@@ -16,7 +16,7 @@ const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
             className="h-16 mx-auto mb-12"
           />
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black mb-8 leading-tight">
-            AI Readiness Diagnostic for Australian SMEs
+            NeatAudit: An AI Readiness & ROI Calculator
           </h1>
           <p className="text-lg sm:text-xl text-black mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             Evaluate your business's readiness to adopt AI—across systems, culture, budget, tooling, and execution. This diagnostic contains 5 onboarding questions and 20 scored questions.
