@@ -8,45 +8,54 @@ interface SurveyIntroProps {
 const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
     <div className="h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-4xl w-full text-center animate-fade-in">
-        <div className="mb-12">
+      <div className="max-w-3xl w-full text-center animate-fade-in">
+        {/* Logo */}
+        <div className="mb-8">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-16 mx-auto mb-12"
+            className="h-12 mx-auto"
           />
         </div>
         
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-12 leading-tight">
+        {/* Main Title */}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6 leading-tight">
           NeatAudit
         </h1>
         
-        <div className="w-full h-px bg-gray-200 mb-12"></div>
+        {/* Subtitle */}
+        <h2 className="text-lg sm:text-xl text-black mb-6 font-medium">
+          Assess your organization's AI readiness with our comprehensive audit framework
+        </h2>
         
-        <p className="text-sm sm:text-base text-gray-600 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-          Evaluate your business's readiness to adopt AI—across systems, culture, budget, tooling, and execution. This diagnostic contains 5 onboarding questions and 20 scored questions.
+        {/* Description */}
+        <p className="text-sm text-black mb-8 max-w-2xl mx-auto font-normal leading-relaxed">
+          Evaluate your business's readiness to adopt AI—across systems, culture, budget, tooling, and execution. This diagnostic audit contains 25 questions and will take 5-10 minutes.
         </p>
         
+        {/* CTA Button */}
         <button
           onClick={onStart}
-          className="inline-flex items-center px-6 py-3 bg-black hover:bg-gray-800 text-white text-sm font-medium transition-all duration-200 ease-out hover:shadow-lg transform hover:-translate-y-0.5 my-4"
+          className="inline-flex items-center px-6 py-3 bg-black hover:bg-gray-800 text-white text-sm font-medium transition-all duration-200 ease-out hover:shadow-lg transform hover:-translate-y-0.5 mb-8"
         >
           <span>Start Your Assessment</span>
           <ArrowRight className="ml-2" size={16} />
         </button>
         
-        <div className="w-full h-px bg-gray-200 mt-12 mb-8"></div>
-        
-        <div className="text-center">
+        {/* Website Link */}
+        <div className="text-center mb-4">
           <a 
             href="https://www.srvdneat.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-sm text-gray-500 hover:text-black transition-colors"
+            className="text-sm text-black hover:text-gray-600 transition-colors"
           >
             www.srvdneat.com
           </a>
         </div>
+        
+        {/* Bottom Spacer Line */}
+        <div className="w-full h-px bg-gray-200"></div>
       </div>
     </div>
   );
