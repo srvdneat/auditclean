@@ -175,15 +175,15 @@ const SurveyForm: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Header Section */}
-      <header className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-3">
-        <div className="max-w-5xl mx-auto">
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+        <div className="max-w-4xl mx-auto">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-12 sm:h-14 mb-4 sm:mb-6"
+            className="h-10 mb-6"
           />
           <ProgressBar percentage={progressPercentage} />
-          <div className="mt-3">
+          <div className="mt-6">
             <SectionIndicator 
               sections={sections} 
               currentSectionIndex={currentSectionIndex} 
@@ -194,14 +194,14 @@ const SurveyForm: React.FC = () => {
       
       {/* Main Content */}
       <main className="flex-1 flex flex-col px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
+        <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col">
           {/* Section Header */}
-          <div className="mb-4 sm:mb-6">
-            <h2 className="text-lg sm:text-xl font-medium text-gray-900 mb-1">
+          <div className="mb-6">
+            <h2 className="text-sm font-medium text-gray-600 mb-1">
               {currentSection.title}
             </h2>
             {currentSection.description && (
-              <p className="text-gray-600 font-light text-sm sm:text-base">
+              <p className="text-xs text-gray-500">
                 {currentSection.description}
               </p>
             )}
@@ -221,7 +221,7 @@ const SurveyForm: React.FC = () => {
               
               {/* Error Messages */}
               {validationError && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                   <p className="text-sm text-red-700 font-medium">{validationError}</p>
                 </div>
               )}
@@ -236,41 +236,41 @@ const SurveyForm: React.FC = () => {
       </main>
       
       {/* Footer Navigation */}
-      <footer className="w-full px-4 sm:px-6 lg:px-8 py-4 bg-white border-t border-gray-200">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex justify-between items-center mb-3">
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex justify-between items-center mb-4">
             <button
               onClick={handlePrevious}
               disabled={isFirstQuestion()}
-              className={`flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-4 py-2 transition-all duration-200 ${
                 isFirstQuestion() 
                   ? 'text-gray-400 cursor-not-allowed' 
-                  : 'text-gray-700 hover:text-black hover:bg-gray-50 active:scale-95'
+                  : 'text-black hover:text-gray-600'
               }`}
               aria-label="Go to previous question"
             >
-              <ArrowLeft size={18} />
-              <span className="font-medium">Previous</span>
+              <ArrowLeft size={16} />
+              <span className="text-sm font-medium">Previous</span>
             </button>
             
             <button
               onClick={handleNext}
               disabled={!canContinue || submitting}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-6 py-2 transition-all duration-200 ${
                 canContinue && !submitting
-                  ? 'bg-black text-white hover:bg-gray-800 active:scale-95 shadow-lg'
+                  ? 'bg-black text-white hover:bg-gray-800'
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
               }`}
               aria-label={isLastQuestion() ? 'Submit survey' : 'Go to next question'}
             >
-              <span>{isLastQuestion() ? (submitting ? 'Submitting...' : 'Complete Survey') : 'Continue'}</span>
-              <ArrowRight size={18} />
+              <span className="text-sm font-medium">{isLastQuestion() ? (submitting ? 'Submitting...' : 'Complete') : 'Continue'}</span>
+              <ArrowRight size={16} />
             </button>
           </div>
           
           {/* Progress Indicator */}
           <div className="text-center">
-            <p className="text-sm text-gray-500 font-medium">
+            <p className="text-xs text-gray-500">
               Question {answeredQuestions} of {totalQuestions}
             </p>
           </div>
