@@ -84,8 +84,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
           placeholder={`Search and select ${limit ? `up to ${limit} options` : 'options'}...`}
           className="
             w-full px-0 py-4 text-base
-            border-0 border-b border-gray-300
-            focus:border-transparent focus:outline-none 
+            border-0 outline-none
             transition-all duration-300 ease-out
             bg-transparent placeholder-gray-400
             font-light text-black

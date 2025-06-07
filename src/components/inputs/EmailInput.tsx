@@ -58,16 +58,15 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
           onFocus={handleFocus}
           onBlur={handleBlur}
           required={required}
-          className={`
+          className="
             w-full px-0 py-4 text-base
-            border-0 border-b border-gray-300
-            focus:border-transparent focus:outline-none 
+            border-0 outline-none
             transition-all duration-300 ease-out
             bg-transparent placeholder-gray-400
             font-light text-black
             transform focus:scale-[1.02] focus:translate-y-[-2px]
             min-h-[48px] touch-manipulation
-          `}
+          "
           placeholder="example@email.com"
           autoFocus
           aria-label="Email input field"
