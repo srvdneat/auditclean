@@ -65,7 +65,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, required }) =>
         aria-describedby={error ? 'email-error' : undefined}
       />
       {error && (
-        <p id="email-error" className="mt-2 text-sm text-red-600 font-medium" role="alert">
+        <p id="email-error\" className="mt-2 text-sm text-red-600 font-medium\" role="alert">
           {error}
         </p>
       )}
