@@ -180,9 +180,9 @@ const SurveyForm: React.FC = () => {
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-8 mb-4"
+            className="h-12 mb-6"
           />
-          <div className="mb-4">
+          <div className="mb-6">
             <ProgressBar percentage={progressPercentage} />
           </div>
           <SectionIndicator 
@@ -193,10 +193,10 @@ const SurveyForm: React.FC = () => {
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-4xl mx-auto w-full">
           {/* Section Header */}
-          <div className="mb-8">
+          <div className="mb-6">
             <h2 className="text-lg sm:text-xl font-medium text-black mb-2">
               {currentSection.title}
             </h2>
@@ -220,7 +220,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                 <p className="text-sm text-red-700 font-medium">{validationError}</p>
               </div>
             )}

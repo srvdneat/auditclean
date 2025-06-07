@@ -29,11 +29,11 @@ const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
   return (
     <div className="w-full animate-fade-in">
       {/* Question Header */}
-      <div className="mb-6">
+      <div className="mb-4">
         <h3 className="text-lg sm:text-xl font-light text-black leading-tight">
           {question.text}
           {question.required && (
-            <span className="text-red-500 ml-2\" aria-label="Required field">*</span>
+            <span className="text-red-500 ml-2" aria-label="Required field">*</span>
           )}
         </h3>
       </div>
