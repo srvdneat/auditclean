@@ -48,10 +48,10 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
         onClick={toggleDropdown}
         className={`
           w-full px-0 py-4 text-lg sm:text-xl text-left
-          border-0 border-b-2 transition-colors duration-200 ease-out
+          border-0 border-b transition-colors duration-200 ease-out
           bg-transparent font-light focus:outline-none
           flex justify-between items-center
-          ${value ? 'border-black text-gray-900' : 'border-gray-300 text-gray-400'}
+          ${value ? 'border-gray-500 text-gray-900' : 'border-gray-300 text-gray-400'}
         `}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
