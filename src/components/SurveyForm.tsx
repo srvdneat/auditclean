@@ -174,8 +174,8 @@ const SurveyForm: React.FC = () => {
 
   return (
     <div className="flex flex-col bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
-      {/* Header Section */}
-      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+      {/* Header Section - Fixed Height */}
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4 flex-shrink-0">
         <div className="max-w-4xl mx-auto">
           {/* Logo and Brand Name */}
           <div className="flex items-center justify-between mb-6">
@@ -199,11 +199,11 @@ const SurveyForm: React.FC = () => {
         </div>
       </header>
       
-      {/* Main Content */}
-      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4">
-        <div className="max-w-4xl mx-auto w-full">
+      {/* Main Content - Flexible Height with Even Vertical Distribution */}
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+        <div className="max-w-4xl mx-auto w-full flex flex-col justify-center min-h-0">
           {/* Section Header */}
-          <div className="mb-6">
+          <div className="mb-8 text-center">
             <h2 className="text-lg sm:text-xl font-medium text-black mb-2">
               {currentSection.title}
             </h2>
@@ -214,8 +214,8 @@ const SurveyForm: React.FC = () => {
             )}
           </div>
           
-          {/* Question Content */}
-          <div className={`transition-all duration-200 ease-out ${
+          {/* Question Content - Centered */}
+          <div className={`flex flex-col items-center justify-center transition-all duration-200 ease-out ${
             transition ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
           }`}>
             <QuestionDisplay 
@@ -227,21 +227,21 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
-                <p className="text-sm text-red-700 font-medium">{validationError}</p>
+              <div className="mt-6 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl w-full" role="alert">
+                <p className="text-sm text-red-700 font-medium text-center">{validationError}</p>
               </div>
             )}
             {submitError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
-                <p className="text-sm text-red-700 font-medium whitespace-pre-line">{submitError}</p>
+              <div className="mt-6 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl w-full" role="alert">
+                <p className="text-sm text-red-700 font-medium whitespace-pre-line text-center">{submitError}</p>
               </div>
             )}
           </div>
         </div>
       </main>
       
-      {/* Footer Navigation */}
-      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 pb-8">
+      {/* Footer Navigation - Fixed Height */}
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 pb-8 flex-shrink-0">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-4">
             <button

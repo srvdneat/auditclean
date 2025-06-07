@@ -27,65 +27,67 @@ const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
   };
 
   return (
-    <div className="w-full animate-fade-in">
-      {/* Question Header */}
-      <div className="mb-4">
-        <h3 className="text-lg sm:text-xl font-light text-black leading-tight">
+    <div className="w-full max-w-3xl animate-fade-in">
+      {/* Question Header - Centered */}
+      <div className="mb-8 text-center">
+        <h3 className="text-xl sm:text-2xl font-light text-black leading-tight">
           {question.text}
           {question.required && (
-            <span className="text-red-500 ml-2\" aria-label="Required field">*</span>
+            <span className="text-red-500 ml-2" aria-label="Required field">*</span>
           )}
         </h3>
       </div>
       
-      {/* Input Component */}
-      <div className="w-full">
-        {question.type === 'shortText' && (
-          <ShortTextInput
-            value={response || ''}
-            onChange={handleChange}
-            required={question.required}
-          />
-        )}
-        
-        {question.type === 'email' && (
-          <EmailInput
-            value={response || ''}
-            onChange={handleChange}
-            required={question.required}
-          />
-        )}
-        
-        {question.type === 'dropdown' && question.options && (
-          <DropdownInput
-            value={response || ''}
-            options={question.options}
-            onChange={handleChange}
-            required={question.required}
-          />
-        )}
-        
-        {question.type === 'multiSelect' && question.options && (
-          <MultiSelectInput
-            value={response || []}
-            options={question.options}
-            onChange={handleChange}
-            limit={question.limit}
-            required={question.required}
-          />
-        )}
-        
-        {question.type === 'opinionScale' && (
-          <OpinionScaleInput
-            value={response || 0}
-            min={question.scaleMin || 1}
-            max={question.scaleMax || 10}
-            minLabel={question.scaleMinLabel}
-            maxLabel={question.scaleMaxLabel}
-            onChange={handleChange}
-            required={question.required}
-          />
-        )}
+      {/* Input Component - Centered */}
+      <div className="w-full flex justify-center">
+        <div className="w-full max-w-2xl">
+          {question.type === 'shortText' && (
+            <ShortTextInput
+              value={response || ''}
+              onChange={handleChange}
+              required={question.required}
+            />
+          )}
+          
+          {question.type === 'email' && (
+            <EmailInput
+              value={response || ''}
+              onChange={handleChange}
+              required={question.required}
+            />
+          )}
+          
+          {question.type === 'dropdown' && question.options && (
+            <DropdownInput
+              value={response || ''}
+              options={question.options}
+              onChange={handleChange}
+              required={question.required}
+            />
+          )}
+          
+          {question.type === 'multiSelect' && question.options && (
+            <MultiSelectInput
+              value={response || []}
+              options={question.options}
+              onChange={handleChange}
+              limit={question.limit}
+              required={question.required}
+            />
+          )}
+          
+          {question.type === 'opinionScale' && (
+            <OpinionScaleInput
+              value={response || 0}
+              min={question.scaleMin || 1}
+              max={question.scaleMax || 10}
+              minLabel={question.scaleMinLabel}
+              maxLabel={question.scaleMaxLabel}
+              onChange={handleChange}
+              required={question.required}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
