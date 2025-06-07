@@ -177,11 +177,18 @@ const SurveyForm: React.FC = () => {
       {/* Header Section */}
       <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
         <div className="max-w-4xl mx-auto">
-          <img 
-            src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
-            alt="NeatAudit Logo" 
-            className="h-24 mb-6"
-          />
+          {/* Logo and Brand Name */}
+          <div className="flex items-center justify-between mb-6">
+            <img 
+              src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
+              alt="NeatAudit Logo" 
+              className="h-24"
+            />
+            <h1 className="text-2xl font-black text-black" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900 }}>
+              NEATAUDIT
+            </h1>
+          </div>
+          
           <div className="mb-6">
             <ProgressBar percentage={progressPercentage} />
           </div>
@@ -220,7 +227,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                 <p className="text-sm text-red-700 font-medium">{validationError}</p>
               </div>
             )}
