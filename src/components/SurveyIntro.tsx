@@ -9,12 +9,12 @@ const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
     <div className="h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-3xl w-full text-center animate-fade-in">
-        {/* Logo and Brand Name */}
-        <div className="mb-8 flex items-center justify-center gap-4">
+        {/* Logo and Brand Name - Stacked Vertically */}
+        <div className="mb-8 flex flex-col items-center">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-12"
+            className="h-24 mb-4"
           />
           <h1 className="text-3xl font-black text-black" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900 }}>
             NEATAUDIT
