@@ -7,27 +7,23 @@ interface SurveyIntroProps {
 
 const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white\" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
-      <div className="max-w-4xl w-full text-center animate-fade-in py-8">
-        <div className="mb-20">
+    <div className="h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-4xl w-full text-center animate-fade-in">
+        <div className="mb-12">
           <img 
             src="/CleanShot 2025-06-03 at 14.41.55@2x.png" 
             alt="NeatAudit Logo" 
-            className="h-16 mx-auto mb-20"
+            className="h-16 mx-auto mb-12"
           />
         </div>
         
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-12 leading-tight">
           NeatAudit
         </h1>
         
-        <h2 className="text-lg sm:text-xl text-black mb-20 max-w-3xl mx-auto font-normal leading-relaxed">
-          Assess your organization's AI readiness with our comprehensive audit framework
-        </h2>
+        <div className="w-full h-px bg-gray-200 mb-12"></div>
         
-        <div className="w-full h-px bg-gray-200 mb-20"></div>
-        
-        <p className="text-sm sm:text-base text-gray-600 mb-20 max-w-2xl mx-auto font-light leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
           Evaluate your business's readiness to adopt AI—across systems, culture, budget, tooling, and execution. This diagnostic contains 5 onboarding questions and 20 scored questions.
         </p>
         
@@ -39,7 +35,7 @@ const SurveyIntro: React.FC<SurveyIntroProps> = ({ onStart }) => {
           <ArrowRight className="ml-2" size={16} />
         </button>
         
-        <div className="w-full h-px bg-gray-200 mt-20 mb-8"></div>
+        <div className="w-full h-px bg-gray-200 mt-12 mb-8"></div>
         
         <div className="text-center">
           <a 
