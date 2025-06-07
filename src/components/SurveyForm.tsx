@@ -220,7 +220,7 @@ const SurveyForm: React.FC = () => {
             
             {/* Error Messages */}
             {validationError && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                 <p className="text-sm text-red-700 font-medium">{validationError}</p>
               </div>
             )}
@@ -234,7 +234,7 @@ const SurveyForm: React.FC = () => {
       </main>
       
       {/* Footer Navigation */}
-      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6">
+      <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 pb-8">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-4">
             <button
