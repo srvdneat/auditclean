@@ -173,7 +173,7 @@ const SurveyForm: React.FC = () => {
   const progressPercentage = (answeredQuestions / totalQuestions) * 100;
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="flex flex-col bg-white" style={{ minHeight: '100vh', minHeight: '100dvh' }}>
       {/* Header Section */}
       <header className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-4">
         <div className="max-w-4xl mx-auto">
@@ -221,7 +221,7 @@ const SurveyForm: React.FC = () => {
               
               {/* Error Messages */}
               {validationError && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg\" role="alert">
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert">
                   <p className="text-sm text-red-700 font-medium">{validationError}</p>
                 </div>
               )}
