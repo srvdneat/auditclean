@@ -11,6 +11,7 @@ export interface SurveyQuestion {
   required?: boolean;
   backendField?: string;
   weight?: number;
+  tooltip?: string;
 }
 
 export interface SurveySection {

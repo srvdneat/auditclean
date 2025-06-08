@@ -260,6 +260,7 @@ export const surveyData: SurveySection[] = [
         type: 'dropdown',
         required: true,
         backendField: 'past_pilot_experience',
+        tooltip: 'AI = Artificial Intelligence, IoT = Internet of Things (connected devices), AR = Augmented Reality, blockchain = distributed ledger technology',
         options: [
           { value: 'strong', label: 'Yes, with strong results', points: 4 },
           { value: 'mixed', label: 'Yes, mixed results', points: 2 },
