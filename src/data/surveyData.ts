@@ -283,8 +283,8 @@ export const surveyData: SurveySection[] = [
         weight: 0.75,
         scaleMin: 1,
         scaleMax: 10,
-        scaleMinLabel: 'Activity-focused',
-        scaleMaxLabel: 'ROI-focused',
+        scaleMinLabel: 'Unfocused',
+        scaleMaxLabel: 'Highly focused',
         backendField: 'outcome_focus'
       },
       {
